@@ -1,0 +1,17 @@
+body {
+       box-sizing: border-box;
+       background-color: #34495e;
+       color: #fff;
+       font-family: 'Mukta', sans-serif;
+}
+
+.figure-container {
+       fill: transparent;
+       stroke: #fff;
+       stroke-width: 4px;
+       stroke-linecap: round;
+}
+
+.figure-part{
+       display: none;
+}

@@ -4,9 +4,48 @@
        <meta charset="UTF-8">
        <meta http-equiv="X-UA-Compatible" content="IE=edge">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="style.css">
+       <link rel="shortcut icon" href="img/favicon.ico" type="image/ico">
+       <script src="script.js" defer></script>
        <title>Hangman</title>
 </head>
 <body>
-       
+      <h1>Hangman Game</h1> 
+      <p>Find the hidden word - Enter a letter</p>
+
+      <!-- Main div -->
+      <div class="game-container" >
+
+       <!-- SVG for the ROD -->
+              <svg height="250" width="250" class="figure-container">
+                     
+              <line x1="60" y1="20" x2="180" y2="20"></line>
+
+              <line x1="180" y1="20" x2="180" y2="60"></line>
+
+              <line x1="60" y1="20" x2="60" y2="250"></line>
+
+              <line x1="20" y1="250" x2="100" y2="250"></line>
+
+              <!-- SVG for the HEAD -->
+              <circle cx="180" cy="80" r="20" class="figure-part"></circle>
+
+              <!-- SVG for the BODY -->
+
+              <line x1="180" y1="100" x2="180" y2="180" class="figure-part"></line>
+
+              <!-- SVG for the ARMS -->
+              <line x1="180" y1="100" x2="155" y2="140" class="figure-part"></line>
+              
+              <line x1="180" y1="100" x2="205" y2="140" class="figure-part"></line>
+
+              <!-- SVG for the ARMS -->
+              <line x1="180" y1="180" x2="210" y2="215" class="figure-part"></line>
+
+              <line x1="180" y1="180" x2="150" y2="215" class="figure-part"></line>
+
+              </svg>
+              
+      </div>
 </body>
 </html>
