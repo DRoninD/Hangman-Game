@@ -3,7 +3,8 @@
 }
 
 body {
-       background-image: linear-gradient(to right, #34495e, #3a4147) ;
+       background-color: #0f4421 ;
+       /* background-image: linear-gradient(to right, #166330, #195a22); */
        color: #fff;
        font-family: 'Mukta', sans-serif;
        display: flex;
@@ -89,7 +90,6 @@ h1{
        left: 0px;
        right: 0px;
        bottom: 0px; 
-       display: flex; 
        display: none;  
        align-items: center;
        justify-content: center;

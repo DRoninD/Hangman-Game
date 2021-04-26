@@ -15,17 +15,18 @@ const figurePart = document.querySelectorAll('.figure-part');
 //Fetching different words
 
 // let data = async function() {
-//        let request = await fetch('https://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minCorpusCount=8000&maxCorpusCount=-1&minDictionaryCount=3&maxDictionaryCount=-1&minLength=6&maxLength=12&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5');
+//        let request = await fetch('https://random-words-api.vercel.app/');
 
 //        let response = await request.json();
 
 //        console.log(response);
-//        Not working but why? Figure it out tomorow!
+      
 // };
+// data()
+//still not working
 
 
-
-
+//MAIN ARRAY OF RANDOM WORDS
 let words = ['error', 'javascript', 'programming', 'frontend', 'backend', 'agile', 'interface', 'experience', 'wizard', 'html'];
 
 //Selecting random word
@@ -83,6 +84,10 @@ window.addEventListener('keydown', e => {
       // console.log(e.keyCode);
       if(e.keyCode >= 65 && e.keyCode <= 90 ){
             const letter = e.key;
+
+            if(selectedWord.includes(letter)){
+
+            
               if(!correctLetters.includes(letter)){
                      correctLetters.push(letter);
 
@@ -90,7 +95,8 @@ window.addEventListener('keydown', e => {
               displayWords(); 
               }  else {
                      showNotification();
-              } 
+              }
+       } 
       } else {
              if(!wrongLetters.includes(letter)){
               wrongLetters.push(letter);  
@@ -98,6 +104,7 @@ window.addEventListener('keydown', e => {
               
              //Update the wrong letters in the DOM
              updateWrongLetters();
+             
              } else {
                     showNotification();
              }
