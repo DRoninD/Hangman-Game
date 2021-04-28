@@ -38,6 +38,7 @@ const correctLetters = [];
 //Wrong Letters
 const wrongLetters = [];
 
+
 //Display the words function
 function displayWords() {
        wordEl.innerHTML = `
@@ -62,7 +63,11 @@ function displayWords() {
 
 // Update the wrong letters
 function updateWrongLetters() {
-
+       //Display wrong words
+       wrongLettersEl.innerHTML = `
+    ${wrongLetters.length > 0 ? '<p>Wrong</p>' : ''}
+    ${wrongLetters.map(letter => `<span>${letter}</span>`)}
+  `;
 }
 
 //Show notfication function
@@ -81,36 +86,29 @@ function showNotification() {
 
 //Keydown letter press
 window.addEventListener('keydown', e => {
-      // console.log(e.keyCode);
-      if(e.keyCode >= 65 && e.keyCode <= 90 ){
-            const letter = e.key;
-
-            if(selectedWord.includes(letter)){
-
-            
-              if(!correctLetters.includes(letter)){
-                     correctLetters.push(letter);
-
-              //Update the DOM
-              displayWords(); 
-              }  else {
-                     showNotification();
-              }
-       } 
-      } else {
-             if(!wrongLetters.includes(letter)){
-              wrongLetters.push(letter);  
-
-              
-             //Update the wrong letters in the DOM
+       // console.log(e.keyCode);
+       if (e.keyCode >= 65 && e.keyCode <= 90) {
+         const letter = e.key;
+     
+         if (selectedWord.includes(letter)) {
+           if (!correctLetters.includes(letter)) {
+             correctLetters.push(letter);
+     
+             displayWords();
+           } else {
+             showNotification();
+           }
+         } else {
+           if (!wrongLetters.includes(letter)) {
+             wrongLetters.push(letter);
+     
              updateWrongLetters();
-             
-             } else {
-                    showNotification();
-             }
-
-      }
-})
+           } else {
+             showNotification();
+           }
+         }
+       }
+     });
 
 // Calling the display function on page load
 displayWords();
