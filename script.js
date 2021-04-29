@@ -7,7 +7,7 @@ const popup = document.querySelector('.popup');
 const notificationContainer = document.getElementById('notification-container');
 const finalMessage = document.getElementById('final-message');
 
-const figurePart = document.querySelectorAll('.figure-part');
+const figureParts = document.querySelectorAll('.figure-part');
 
 //Main Array for different words
 // Make an request to a free API so that the user can get a different word each time, for now we use hardcoded words
@@ -64,10 +64,32 @@ function displayWords() {
 // Update the wrong letters
 function updateWrongLetters() {
        //Display wrong words
-       wrongLettersEl.innerHTML = `
+    wrongLettersEl.innerHTML = `
     ${wrongLetters.length > 0 ? '<p>Wrong</p>' : ''}
     ${wrongLetters.map(letter => `<span>${letter}</span>`)}
   `;
+
+  // if(wrongLettersEl.innerHTML.length > 5) {
+  //   wrongLettersEl.style.display = 'block';
+  // }
+
+  // Figure part
+    figureParts.forEach((part, index) => {
+      const errors = wrongLetters.length;
+
+      if(index < errors) {
+        part.style.display = 'block';
+      } else {
+        part.style.display = 'none';
+      }
+    });
+  
+    //Checking if we lost
+    if(wrongLetters.length === figureParts.length) {
+      finalMessage.innerText = `Unfotunately, you've lost`;
+      popupContainer.style.display = 'flex';
+    }
+
 }
 
 //Show notfication function
@@ -109,6 +131,23 @@ window.addEventListener('keydown', e => {
          }
        }
      });
+
+//Restart GAME
+playAgainBtn.addEventListener('click', () => {
+  //Empty arrays
+  correctLetters.splice(0);
+  wrongLetters.splice(0);
+
+  //Picking random word
+  selectedWord = words[Math.floor(Math.random() * words.length)];
+
+  displayWords();
+
+  updateWrongLetters();
+
+  popupContainer.style.display = 'none';
+
+})
 
 // Calling the display function on page load
 displayWords();
